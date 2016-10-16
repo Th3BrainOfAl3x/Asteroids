@@ -40,5 +40,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/exit"
-        style="@style/StyleButton.alternative" />
+        style="@style/StyleButton.alternative"
+        android:onClick="exit"/>
 </LinearLayout>

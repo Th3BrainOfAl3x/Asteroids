@@ -6,6 +6,6 @@
     <string name="about">Acerca de</string>
     <string name="exit">Salir</string>
     <string name="titleAsteroids">Asteroides</string>
-    <string name="asteroidsTab">Asteroides</string>
+    <string name="preferences">Preferencias</string>
     <string name="about_text">Este programa ha sido desarrollado como ejemplo en el curso de Android para demostrar cómo se pueden lanzar nuevas actividades desde la actividad principal.</string>
 </resources>

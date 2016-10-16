@@ -5,7 +5,7 @@
     <string name="about">About</string>
     <string name="exit">Exit</string>
     <string name="titleAsteroids">Asteroids</string>
-    <string name="asteroidsTab">Asteroids</string>
+    <string name="preferences">Preferences</string>
     <string name="about_text">This is an app created to follow the Android Fundamentals course</string>
 </resources>
 
