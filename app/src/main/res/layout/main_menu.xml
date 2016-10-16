@@ -15,29 +15,28 @@
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/play"
+        android:id="@+id/bPlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/play"
         style="@style/StyleButton" />
 
     <Button
-        android:id="@+id/configuration"
+        android:id="@+id/bConfiguration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/configuration"
         style="@style/StyleButton.alternative" />
 
     <Button
-        android:id="@+id/about"
+        android:id="@+id/bAbout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/about"
-        style="@style/StyleButton.alternative"
-        android:onClick="fireAbout" />
+        style="@style/StyleButton.alternative" />
 
     <Button
-        android:id="@+id/exit"
+        android:id="@+id/bExit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/exit"
