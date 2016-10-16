@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Asteroids</string>
+    <string name="play">Play</string>
+    <string name="configuration">Configuration</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="titleAsteroids">Asteroids</string>
+    <string name="asteroidsTab">Asteroids</string>
+    <string name="about_text">This is an app created to follow the Android Fundamentals course</string>
 </resources>
+
