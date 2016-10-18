@@ -7,5 +7,6 @@
     <string name="titleAsteroids">Asteroids</string>
     <string name="preferences">Preferences</string>
     <string name="about_text">This is an app created to follow the Android Fundamentals course</string>
+    <string name="search">Search</string>
 </resources>
 

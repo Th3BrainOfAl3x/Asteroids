@@ -35,25 +35,33 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) { int id = item.getItemId();
-        if (id == R.id.action_settings) { return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_settings) {
+            return true;
         }
+
         if (id == R.id.about) {
             fireAbout(null);
-            return true; }
-        return super.onOptionsItemSelected(item); }
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     public void fireAbout(View view) {
         Intent i = new Intent(this, AboutActivity.class);
         startActivity(i);
     }
 
-    public void exit(View view){
+    public void exit(View view) {
         finish();
     }
 }
