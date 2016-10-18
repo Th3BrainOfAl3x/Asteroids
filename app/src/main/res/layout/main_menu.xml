@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/play"
+        android:onClick="showPreferences"
         style="@style/StyleButton" />
 
     <Button
@@ -37,10 +38,10 @@
         style="@style/StyleButton.alternative" />
 
     <Button
-        android:id="@+id/bExit"
+        android:id="@+id/bScores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/exit"
+        android:text="@string/scores"
         style="@style/StyleButton.alternative"
-        android:onClick="exit"/>
+        android:onClick="fireScores"/>
 </LinearLayout>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">CatalanA_U2</string>
+    <string name="app_name">Asteroides</string>
     <string name="play">Jugar</string>
     <string name="configuration">Configuración</string>
     <string name="about">Acerca de</string>
-    <string name="exit">Salir</string>
+    <string name="scores">Puntuaciones</string>
     <string name="titleAsteroids">Asteroides</string>
     <string name="preferences">Preferencias</string>
     <string name="about_text">Este programa ha sido desarrollado como ejemplo en el curso de Android para demostrar cómo se pueden lanzar nuevas actividades desde la actividad principal.</string>
@@ -15,4 +15,8 @@
     <string name="graphic_types">Tipo de gráfico</string>
     <string name="fragments_number">Número de Fragmentos</string>
     <string name="fragments_number_summary">En cuantos trozos se divide un asteroide</string>
+    <string name="max_players">Maximo jugadores</string>
+    <string name="multiplayer_mode">Modo multijugador</string>
+    <string name="conexion_type">Tipo de conexión</string>
+    <string name="activate_multipalyer">Activar mulitjugador</string>
 </resources>

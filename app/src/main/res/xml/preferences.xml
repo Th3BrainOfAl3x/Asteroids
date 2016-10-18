@@ -18,4 +18,20 @@
         android:title="@string/fragments_number"
         android:summary="@string/fragments_number_summary"
         android:defaultValue="3"/>
+
+    <PreferenceCategory android:title="@string/multiplayer_mode">
+        <CheckBoxPreference
+            android:key="activate_multipalyer"
+            android:title="@string/activate_multipalyer"/>
+        <ListPreference
+            android:key="conexion_type"
+            android:title="@string/conexion_type"
+            android:entries="@array/conexionTypes"
+            android:entryValues="@array/conexionTypesValues"
+            android:defaultValue="1"/>
+        <EditTextPreference
+            android:key="max_players"
+            android:title="@string/max_players"
+            android:defaultValue="1"/>
+    </PreferenceCategory>
 </PreferenceScreen>

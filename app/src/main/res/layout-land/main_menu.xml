@@ -27,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/play"
+                android:onClick="showPreferences"
                 style="@style/StyleButton" />
 
             <Button
@@ -34,6 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/configuration"
+                android:onClick="firePreferences"
                 style="@style/StyleButton.alternative" />
         </TableRow>
 
@@ -51,7 +53,7 @@
                 android:id="@+id/exit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/exit"
+                android:text="@string/scores"
                 style="@style/StyleButton.alternative" />
         </TableRow>
     </TableLayout>

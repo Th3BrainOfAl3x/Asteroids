@@ -3,7 +3,7 @@
     <string name="play">Play</string>
     <string name="configuration">Configuration</string>
     <string name="about">About</string>
-    <string name="exit">Exit</string>
+    <string name="scores">Scores</string>
     <string name="titleAsteroids">Asteroids</string>
     <string name="preferences">Preferences</string>
     <string name="about_text">This is an app created to follow the Android Fundamentals course</string>
@@ -14,5 +14,9 @@
     <string name="graphic_types">Graphic Types</string>
     <string name="fragments_number">Number of fragments</string>
     <string name="fragments_number_summary">How much fragments the asteroid is divided</string>
+    <string name="multiplayer_mode">Multiplayer Mode</string>
+    <string name="activate_multipalyer">Activate Multiplayer</string>
+    <string name="conexion_type">Conextion Type</string>
+    <string name="max_players">Max players</string>
 </resources>
 
