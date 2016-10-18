@@ -45,6 +45,7 @@ public class MainMenuActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
+            firePreferences(null);
             return true;
         }
 
@@ -58,6 +59,11 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void fireAbout(View view) {
         Intent i = new Intent(this, AboutActivity.class);
+        startActivity(i);
+    }
+
+    public void firePreferences(View view){
+        Intent i = new Intent(this, Preferences.class);
         startActivity(i);
     }
 

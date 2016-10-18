@@ -8,5 +8,11 @@
     <string name="preferences">Preferences</string>
     <string name="about_text">This is an app created to follow the Android Fundamentals course</string>
     <string name="search">Search</string>
+    <string name="music">Play music</string>
+    <string name="music_summary">Music is played in background</string>
+    <string name="graphic_types_summary">Choose how is showed graphics</string>
+    <string name="graphic_types">Graphic Types</string>
+    <string name="fragments_number">Number of fragments</string>
+    <string name="fragments_number_summary">How much fragments the asteroid is divided</string>
 </resources>
 

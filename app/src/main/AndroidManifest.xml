@@ -20,6 +20,9 @@
             android:name=".AboutActivity"
             android:label="@string/about"
             android:theme="@android:style/Theme.Dialog" />
+        <activity
+            android:name=".Preferences"
+            android:label="@string/preferences" />
     </application>
 
 </manifest>
