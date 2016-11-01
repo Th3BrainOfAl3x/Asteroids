@@ -8,12 +8,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainMenuActivity extends AppCompatActivity {
 
-    private Button bAbout, bScores;
+    private Button bPlay, bAbout, bScores, bConfig;
+    private TextView title;
 
     public static ScoreStore store = new ArrayScoreStore();
 
@@ -36,7 +40,19 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 fireScores(null);
             }
+
         });
+
+        Animation animationTitle = AnimationUtils.loadAnimation(this, R.anim.turn_with_zoom);
+        bAbout.startAnimation(animationTitle);
+
+        bPlay = (Button) findViewById(R.id.bPlay);
+        Animation animationBPlay = AnimationUtils.loadAnimation(this, R.anim.appear);
+        bPlay.startAnimation(animationBPlay);
+
+        bConfig = (Button) findViewById(R.id.bConfiguration);
+        Animation animationBConfig = AnimationUtils.loadAnimation(this, R.anim.move_right);
+        bConfig.startAnimation(animationBConfig);
     }
 
     @Override
@@ -81,10 +97,16 @@ public class MainMenuActivity extends AppCompatActivity {
                  + ", conexion_type: " + pref.getString("conexion_type","?")
                  + ", max_players: " + pref.getString("max_players", "0");
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
+
     }
 
     public void fireScores(View view) {
         Intent i = new Intent(this, Scores.class);
+        startActivity(i);
+    }
+
+    public void fireGame(View view){
+        Intent i = new Intent(this, Game.class);
         startActivity(i);
     }
 }

@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:id="@+id/main_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:padding="@dimen/padding_buttons"
-    android:id="@+id/main_menu">
+    android:orientation="vertical"
+    android:padding="@dimen/padding_buttons">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titleAsteroids"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:textSize="25sp" />
+        android:text="@string/titleAsteroids"
+        android:textSize="25sp"
+        android:id="@+id/title"/>
 
     <TableLayout
         android:layout_width="match_parent"
@@ -23,38 +24,39 @@
         <TableRow>
 
             <Button
-                android:id="@+id/play"
+                android:id="@+id/bPlay"
+                style="@style/StyleButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/play"
-                android:onClick="showPreferences"
-                style="@style/StyleButton" />
+                android:onClick="fireGame"
+                android:text="@string/play" />
 
             <Button
-                android:id="@+id/configuration"
+                android:id="@+id/bConfiguration"
+                style="@style/StyleButton.alternative"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/configuration"
                 android:onClick="firePreferences"
-                style="@style/StyleButton.alternative" />
+                android:text="@string/configuration" />
         </TableRow>
 
         <TableRow>
 
             <Button
-                android:id="@+id/about"
+                android:id="@+id/bAbout"
+                style="@style/StyleButton.alternative"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/about"
-                style="@style/StyleButton.alternative"
-                android:onClick="fireAbout" />
+                android:onClick="fireAbout"
+                android:text="@string/about" />
 
             <Button
-                android:id="@+id/exit"
+                android:id="@+id/bScores"
+                style="@style/StyleButton.alternative"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/scores"
-                style="@style/StyleButton.alternative" />
+                android:onClick="fireScores"
+                android:text="@string/scores" />
         </TableRow>
     </TableLayout>
 </LinearLayout>

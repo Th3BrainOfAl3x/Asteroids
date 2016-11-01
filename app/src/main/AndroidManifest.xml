@@ -8,9 +8,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="dreamfacilities.com.asteroids.MainMenuActivity"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            android:name=".MainMenuActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,10 +21,14 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity
             android:name=".Preferences"
-            android:label="@string/preferences" />
+            android:label="@string/preferences"/>
         <activity
             android:name=".Scores"
-            android:label="@string/preferences" />
+            android:label="@string/scores"/>
+        <activity
+            android:name=".Game"
+            android:label="@string/titleAsteroids"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:screenOrientation="landscape"/>
     </application>
-
 </manifest>
