@@ -1,6 +1,7 @@
 package dreamfacilities.com.asteroids;
 
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
@@ -18,6 +19,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private Button bPlay, bAbout, bScores, bConfig;
     private TextView title;
+
+    private MediaPlayer mp;
 
     public static ScoreStore store = new ArrayScoreStore();
 
@@ -53,6 +56,9 @@ public class MainMenuActivity extends AppCompatActivity {
         bConfig = (Button) findViewById(R.id.bConfiguration);
         //Animation animationBConfig = AnimationUtils.loadAnimation(this, R.anim.move_right);
         //bConfig.startAnimation(animationBConfig);
+
+        mp = MediaPlayer.create(this, R.raw.audio);
+        mp.start();
     }
 
     @Override
@@ -107,5 +113,42 @@ public class MainMenuActivity extends AppCompatActivity {
     public void fireGame(View view){
         Intent i = new Intent(this, Game.class);
         startActivity(i);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //mp.pause();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mp.start();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mp.stop();
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mp.start();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mp.stop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedState) {
+        super.onSaveInstanceState(savedState);
+        if(mp != null) savedState.putInt("position", mp.getCurrentPosition());
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle restoreState) {
+        super.onRestoreInstanceState(restoreState);
+        if(restoreState != null && mp != null) mp.seekTo(restoreState.getInt("position"));
     }
 }

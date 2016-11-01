@@ -60,7 +60,7 @@ public class Graphic {
         return Math.hypot(cenX - g.cenX, cenY - g.cenY);
     }
 
-    public boolean verificaColision(Graphic g) {
+    public boolean verifyCollision(Graphic g) {
         return (distance(g) < (radioColission + g.radioColission));
     }
 

@@ -14,11 +14,15 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 
 import java.util.List;
@@ -52,11 +56,16 @@ public class GameView extends View implements SensorEventListener {
 
     // /// BULLET ////
     private Graphic bullet;
-    private static int BULLET_SPEED_STEP;
+    private static int BULLET_SPEED_STEP = 12;
     private boolean activeBullet = false;
     private int bulletTimer;
 
     private SharedPreferences pref;
+
+    //MEDIA
+    private SoundPool soundPool;
+
+    int idShoot, idExplosion;
 
     public GameView(Context context, AttributeSet attrs) {
 
@@ -127,6 +136,8 @@ public class GameView extends View implements SensorEventListener {
         starship.setIncY(0);
 
         bullet = new Graphic(this, drawableBullet);
+        bullet.setIncX(0);
+        bullet.setIncY(0);
 
         asteroids = new Vector<Graphic>();
         for (int i = 0; i < numAsteroids; i++) {
@@ -145,6 +156,10 @@ public class GameView extends View implements SensorEventListener {
             Sensor orientationSensor = listSensors.get(0);
             mSensorManager.registerListener(this, orientationSensor, SensorManager.SENSOR_DELAY_GAME);
         }
+
+        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        idShoot = soundPool.load(context, R.raw.shoot, 0);
+        idExplosion = soundPool.load(context, R.raw.explosion, 0);
     }
 
     protected void updatePhysics() {
@@ -177,14 +192,13 @@ public class GameView extends View implements SensorEventListener {
         }
 
         if (activeBullet) {
-
             bullet.incrementPos(delay);
             bulletTimer -= delay;
             if (bulletTimer < 0) {
                 activeBullet = false;
             } else {
                 for (int i = 0; i < asteroids.size(); i++) {
-                    if (bullet.verificaColision(asteroids.elementAt(i))) {
+                    if (bullet.verifyCollision(asteroids.elementAt(i))) {
                         destroyAsteroid(i);
                         break;
                     }
@@ -224,7 +238,7 @@ public class GameView extends View implements SensorEventListener {
         }
         starship.drawGraphic(canvas);
 
-        if (activeBullet) bullet.drawGraphic(canvas);
+        if(activeBullet) bullet.drawGraphic(canvas);
     }
 
     @Override
@@ -319,8 +333,7 @@ public class GameView extends View implements SensorEventListener {
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     private boolean existInitialValue = false;
     private float initialValue;
@@ -342,6 +355,7 @@ public class GameView extends View implements SensorEventListener {
         synchronized (asteroids) {
             asteroids.removeElementAt(i);
             activeBullet = false;
+            soundPool.play(idExplosion, 1, 1, 0, 0, 1);
         }
     }
 
@@ -350,9 +364,18 @@ public class GameView extends View implements SensorEventListener {
         bullet.setCenY(starship.getCenY());
         bullet.setAngle(starship.getAngle());
         bullet.setIncX(Math.cos(Math.toRadians(bullet.getAngle())) * BULLET_SPEED_STEP);
-        bullet.setIncX(Math.sin(Math.toRadians(bullet.getAngle())) * BULLET_SPEED_STEP);
+        bullet.setIncY(Math.sin(Math.toRadians(bullet.getAngle())) * BULLET_SPEED_STEP);
         bulletTimer = (int) Math.min(this.getWidth() / Math.abs(bullet.getIncX()), this.getHeight() / Math.abs(bullet.getIncY())) - 2;
         activeBullet = true;
+        soundPool.play(idShoot, 1, 1, 1, 0, 1);
+    }
+
+    private void activateSensors(){
+
+    }
+
+    private void deactivateSensors(){
+
     }
 
     public GameThread getThread() {
