@@ -43,16 +43,16 @@ public class MainMenuActivity extends AppCompatActivity {
 
         });
 
-        Animation animationTitle = AnimationUtils.loadAnimation(this, R.anim.turn_with_zoom);
-        bAbout.startAnimation(animationTitle);
+        //Animation animationTitle = AnimationUtils.loadAnimation(this, R.anim.turn_with_zoom);
+        //bAbout.startAnimation(animationTitle);
 
         bPlay = (Button) findViewById(R.id.bPlay);
-        Animation animationBPlay = AnimationUtils.loadAnimation(this, R.anim.appear);
-        bPlay.startAnimation(animationBPlay);
+        //Animation animationBPlay = AnimationUtils.loadAnimation(this, R.anim.appear);
+        //bPlay.startAnimation(animationBPlay);
 
         bConfig = (Button) findViewById(R.id.bConfiguration);
-        Animation animationBConfig = AnimationUtils.loadAnimation(this, R.anim.move_right);
-        bConfig.startAnimation(animationBConfig);
+        //Animation animationBConfig = AnimationUtils.loadAnimation(this, R.anim.move_right);
+        //bConfig.startAnimation(animationBConfig);
     }
 
     @Override
@@ -97,7 +97,6 @@ public class MainMenuActivity extends AppCompatActivity {
                  + ", conexion_type: " + pref.getString("conexion_type","?")
                  + ", max_players: " + pref.getString("max_players", "0");
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
-
     }
 
     public void fireScores(View view) {

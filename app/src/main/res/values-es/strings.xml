@@ -19,4 +19,9 @@
     <string name="multiplayer_mode">Modo multijugador</string>
     <string name="conexion_type">Tipo de conexión</string>
     <string name="activate_multipalyer">Activar mulitjugador</string>
+    <string name="game_input">Entradas del juego</string>
+    <string name="accelerometer">Acelerometro</string>
+    <string name="touch">Tactil</string>
+    <string name="keyboard">teclas</string>
+    <string name="giroscope">Giroscopio</string>
 </resources>

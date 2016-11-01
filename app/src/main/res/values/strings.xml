@@ -18,5 +18,10 @@
     <string name="activate_multipalyer">Activate Multiplayer</string>
     <string name="conexion_type">Conextion Type</string>
     <string name="max_players">Max players</string>
+    <string name="game_input">Game Inputs</string>
+    <string name="accelerometer">Accelerometer</string>
+    <string name="touch">Touch</string>
+    <string name="keyboard">keys</string>
+    <string name="giroscope">Giroscope</string>
 </resources>
 

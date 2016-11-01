@@ -18,7 +18,18 @@
         android:title="@string/fragments_number"
         android:summary="@string/fragments_number_summary"
         android:defaultValue="3"/>
-
+    <PreferenceCategory android:title="@string/game_input">
+        <CheckBoxPreference
+            android:key="sensor_accelerometer"
+            android:title="@string/accelerometer"/>
+        <CheckBoxPreference
+            android:key="touch"
+            android:title="@string/touch"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:key="keyboard"
+            android:title="@string/keyboard"/>
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/multiplayer_mode">
         <CheckBoxPreference
             android:key="activate_multipalyer"
