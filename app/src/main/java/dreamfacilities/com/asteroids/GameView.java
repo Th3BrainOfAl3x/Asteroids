@@ -355,11 +355,41 @@ public class GameView extends View implements SensorEventListener {
         activeBullet = true;
     }
 
+    public GameThread getThread() {
+        return thread;
+    }
+
     class GameThread extends Thread {
+
+        private boolean paused, running;
+
+        public synchronized void pause() {
+            paused = true;
+        }
+
+        public synchronized void resumeGame() {
+            paused = false;
+            notify();
+        }
+
+        public void stopGame() {
+            running = false;
+            if (paused) resumeGame();
+        }
+
         @Override
         public void run() {
-            while (true) {
+            running = true;
+            while (running) {
                 updatePhysics();
+                synchronized (this) {
+                    while (paused) {
+                        try {
+                            wait();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
             }
         }
     }

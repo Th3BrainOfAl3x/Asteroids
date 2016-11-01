@@ -19,17 +19,17 @@ public class Game extends Activity {
 
     @Override
     protected void onPause() {
-        gameView.getThread().pausar();
+        gameView.getThread().pause();
         super.onPause();
     }
     @Override
     protected void onResume() {
         super.onResume();
-        gameView.getThread().reanudar();
+        gameView.getThread().resumeGame();
     }
     @Override
     protected void onDestroy() {
-        gameView.getThread().detener();
+        gameView.getThread().stopGame();
         super.onDestroy();
     }
 }
