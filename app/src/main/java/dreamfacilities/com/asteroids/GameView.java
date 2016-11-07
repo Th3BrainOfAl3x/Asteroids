@@ -55,10 +55,9 @@ public class GameView extends View implements SensorEventListener {
     private long lastProcess = 0;
 
     // /// BULLET ////
-    private Graphic bullet;
+    private Vector<Graphic> bullets;
     private static int BULLET_SPEED_STEP = 12;
-    private boolean activeBullet = false;
-    private int bulletTimer;
+    private Vector<Integer> bulletTimers;
 
     private SharedPreferences pref;
 
@@ -67,10 +66,13 @@ public class GameView extends View implements SensorEventListener {
 
     int idShoot, idExplosion;
 
+    private Drawable drawableStarship, drawableAsteroid, drawableBullet;
+
+    SensorManager mSensorManager;
+
     public GameView(Context context, AttributeSet attrs) {
 
         super(context, attrs);
-        Drawable drawableStarship, drawableAsteroid, drawableBullet;
 
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
 
@@ -135,9 +137,6 @@ public class GameView extends View implements SensorEventListener {
         starship.setIncX(0);
         starship.setIncY(0);
 
-        bullet = new Graphic(this, drawableBullet);
-        bullet.setIncX(0);
-        bullet.setIncY(0);
 
         asteroids = new Vector<Graphic>();
         for (int i = 0; i < numAsteroids; i++) {
@@ -148,13 +147,15 @@ public class GameView extends View implements SensorEventListener {
             asteroid.setRotation((int) (Math.random() * 8 - 4));
             asteroids.add(asteroid);
         }
+        bullets = new Vector<Graphic>();
+        bulletTimers = new Vector<Integer>();
 
         //Register the sensor and listener to our view
-        SensorManager mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-        List<Sensor> listSensors = mSensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+        mSensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
+        List<Sensor> listSensors = mSensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         if (!listSensors.isEmpty()) {
-            Sensor orientationSensor = listSensors.get(0);
-            mSensorManager.registerListener(this, orientationSensor, SensorManager.SENSOR_DELAY_GAME);
+            Sensor accelerometerSensor = listSensors.get(0);
+            mSensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
         }
 
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
@@ -190,21 +191,35 @@ public class GameView extends View implements SensorEventListener {
         for (Graphic asteroid : asteroids) {
             asteroid.incrementPos(delay);
         }
+        synchronized (bullets) {
 
-        if (activeBullet) {
-            bullet.incrementPos(delay);
-            bulletTimer -= delay;
-            if (bulletTimer < 0) {
-                activeBullet = false;
-            } else {
-                for (int i = 0; i < asteroids.size(); i++) {
-                    if (bullet.verifyCollision(asteroids.elementAt(i))) {
-                        destroyAsteroid(i);
-                        break;
+
+            if (!bullets.isEmpty()) {
+                for (int b = 0; b < bullets.size(); b++) {
+
+                    Graphic bullet = bullets.get(b);
+                    bullet.incrementPos(delay);
+
+                    int bulletTimer = bulletTimers.get(b).intValue();
+                    bulletTimer -= delay;
+
+                    if (bulletTimer < 0) {
+                        bullets.removeElementAt(b);
+                        bulletTimers.removeElementAt(b);
+                    } else {
+                        for (int i = 0; i < asteroids.size(); i++) {
+                            if (bullet.verifyCollision(asteroids.elementAt(i))) {
+                                destroyAsteroid(i);
+                                bullets.removeElementAt(b);
+                                bulletTimers.removeElementAt(b);
+                                break;
+                            }
+                        }
                     }
                 }
             }
         }
+
     }
 
     @Override
@@ -232,13 +247,13 @@ public class GameView extends View implements SensorEventListener {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         synchronized (asteroids) {
-            for (Graphic asteroid : asteroids) {
-                asteroid.drawGraphic(canvas);
-            }
+            for (Graphic asteroid : asteroids) asteroid.drawGraphic(canvas);
+
+        }
+        synchronized (bullets) {
+            if (!bullets.isEmpty()) for (Graphic bullet : bullets) bullet.drawGraphic(canvas);
         }
         starship.drawGraphic(canvas);
-
-        if(activeBullet) bullet.drawGraphic(canvas);
     }
 
     @Override
@@ -333,49 +348,70 @@ public class GameView extends View implements SensorEventListener {
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
 
-    private boolean existInitialValue = false;
-    private float initialValue;
+    private boolean existRotationInitialValue = false,
+            existAccelerationInitialValue = false;
+    private float initialRotationValue, initialAccelerationValue;
 
     @Override
     public void onSensorChanged(SensorEvent event) {
 
         if (pref.getBoolean("sensor_accelerometer", false)) {
-            float value = event.values[1];
-            if (!existInitialValue) {
-                initialValue = value;
-                existInitialValue = true;
+            float rotationValue = event.values[1];
+            float accelerationValue = event.values[0];
+
+            //Log.d("Sensor 1","Acelerómetro "+1+": "+event.values[1]);
+            if (!existRotationInitialValue) {
+                initialRotationValue = rotationValue;
+                existRotationInitialValue = true;
             }
-            rotationStarship = (int) (value - initialValue) / 3;
+            if (!existAccelerationInitialValue) {
+                initialAccelerationValue = accelerationValue;
+                existAccelerationInitialValue = true;
+            }
+            // ACC -180 -- 180
+            rotationStarship = (int) (rotationValue - initialRotationValue);
+
+            int accResult = (int) (accelerationValue - initialAccelerationValue) / 2;
+            if (accResult < 0) accelerationSpaceship = (-accResult);
         }
     }
 
     private void destroyAsteroid(int i) {
         synchronized (asteroids) {
             asteroids.removeElementAt(i);
-            activeBullet = false;
             soundPool.play(idExplosion, 1, 1, 0, 0, 1);
         }
     }
 
     private void activateBullet() {
+        Graphic bullet = new Graphic(this, drawableBullet);
         bullet.setCenX(starship.getCenX());
         bullet.setCenY(starship.getCenY());
         bullet.setAngle(starship.getAngle());
         bullet.setIncX(Math.cos(Math.toRadians(bullet.getAngle())) * BULLET_SPEED_STEP);
         bullet.setIncY(Math.sin(Math.toRadians(bullet.getAngle())) * BULLET_SPEED_STEP);
-        bulletTimer = (int) Math.min(this.getWidth() / Math.abs(bullet.getIncX()), this.getHeight() / Math.abs(bullet.getIncY())) - 2;
-        activeBullet = true;
+
+        int indexTimer = 0;
+        if (!bullets.isEmpty()) indexTimer = bullets.size();
+
+        bullets.add(bullet);
+        bulletTimers.add(indexTimer, (int) Math.min(this.getWidth() / Math.abs(bullet.getIncX()), this.getHeight() / Math.abs(bullet.getIncY())) - 2);
         soundPool.play(idShoot, 1, 1, 1, 0, 1);
     }
 
-    private void activateSensors(){
-
+    public void activateSensors() {
+        List<Sensor> listSensors = mSensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+        if (!listSensors.isEmpty()) {
+            Sensor accelerometerSensor = listSensors.get(0);
+            mSensorManager.registerListener(this, accelerometerSensor, SensorManager.SENSOR_DELAY_GAME);
+        }
     }
 
-    private void deactivateSensors(){
-
+    public void deactivateSensors() {
+        mSensorManager.unregisterListener(this);
     }
 
     public GameThread getThread() {

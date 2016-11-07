@@ -20,15 +20,18 @@ public class Game extends Activity {
     @Override
     protected void onPause() {
         gameView.getThread().pause();
+        gameView.activateSensors();
         super.onPause();
     }
     @Override
     protected void onResume() {
         super.onResume();
+        gameView.activateSensors();
         gameView.getThread().resumeGame();
     }
     @Override
     protected void onDestroy() {
+        gameView.deactivateSensors();
         gameView.getThread().stopGame();
         super.onDestroy();
     }
