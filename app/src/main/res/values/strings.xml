@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Asteroids</string>
+    <string name="play">Play</string>
+    <string name="configuration">Configuration</string>
+    <string name="about">About</string>
+    <string name="scores">Scores</string>
+    <string name="titleAsteroids">Asteroids</string>
+    <string name="preferences">Preferences</string>
+    <string name="about_text">This is an app created to follow the Android Fundamentals course</string>
+    <string name="search">Search</string>
+    <string name="music">Play music</string>
+    <string name="music_summary">Music is played in background</string>
+    <string name="graphic_types_summary">Choose how is showed graphics</string>
+    <string name="graphic_types">Graphic Types</string>
+    <string name="fragments_number">Number of fragments</string>
+    <string name="fragments_number_summary">How much fragments the asteroid is divided</string>
+    <string name="multiplayer_mode">Multiplayer Mode</string>
+    <string name="activate_multipalyer">Activate Multiplayer</string>
+    <string name="conexion_type">Conextion Type</string>
+    <string name="max_players">Max players</string>
+    <string name="game_input">Game Inputs</string>
+    <string name="accelerometer">Accelerometer</string>
+    <string name="touch">Touch</string>
+    <string name="keyboard">keys</string>
+    <string name="giroscope">Giroscope</string>
+    <string name="storage_types">Storage Types</string>
+    <string name="storage_types_summary">Type of storage where score are save</string>
 </resources>
+

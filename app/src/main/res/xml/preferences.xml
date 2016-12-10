@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="main_preferences" >
+    <CheckBoxPreference
+        android:key="music"
+        android:title="@string/music"
+        android:summary="@string/music_summary"/>
+    <ListPreference
+        android:key="graphics"
+        android:title="@string/graphic_types"
+        android:summary="@string/graphic_types_summary"
+        android:entries="@array/graphicType"
+        android:entryValues="@array/graphicTypesValues"
+        android:defaultValue="1"/>
+    <ListPreference
+        android:key="storage"
+        android:title="@string/storage_types"
+        android:summary="@string/storage_types_summary"
+        android:entries="@array/storageTypes"
+        android:entryValues="@array/storageTypesValues"
+        android:defaultValue="1"/>
+    <EditTextPreference
+        android:key="fragments"
+        android:title="@string/fragments_number"
+        android:summary="@string/fragments_number_summary"
+        android:defaultValue="3"/>
+    <PreferenceCategory android:title="@string/game_input">
+        <CheckBoxPreference
+            android:key="sensor_accelerometer"
+            android:title="@string/accelerometer"/>
+        <CheckBoxPreference
+            android:key="touch"
+            android:title="@string/touch"
+            android:defaultValue="true"/>
+        <CheckBoxPreference
+            android:key="keyboard"
+            android:title="@string/keyboard"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/multiplayer_mode">
+        <CheckBoxPreference
+            android:key="activate_multipalyer"
+            android:title="@string/activate_multipalyer"/>
+        <ListPreference
+            android:key="conexion_type"
+            android:title="@string/conexion_type"
+            android:entries="@array/conexionTypes"
+            android:entryValues="@array/conexionTypesValues"
+            android:defaultValue="1"/>
+        <EditTextPreference
+            android:key="max_players"
+            android:title="@string/max_players"
+            android:defaultValue="1"/>
+    </PreferenceCategory>
+</PreferenceScreen>

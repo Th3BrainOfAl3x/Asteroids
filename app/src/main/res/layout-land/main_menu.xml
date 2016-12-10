@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_buttons">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/titleAsteroids"
+        android:textSize="25sp"
+        android:id="@+id/title"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/bPlay"
+                style="@style/StyleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="fireGame"
+                android:text="@string/play" />
+
+            <Button
+                android:id="@+id/bConfiguration"
+                style="@style/StyleButton.alternative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="firePreferences"
+                android:text="@string/configuration" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/bAbout"
+                style="@style/StyleButton.alternative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="fireAbout"
+                android:text="@string/about" />
+
+            <Button
+                android:id="@+id/bScores"
+                style="@style/StyleButton.alternative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="fireScores"
+                android:text="@string/scores" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

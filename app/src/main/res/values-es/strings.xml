@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Asteroides</string>
+    <string name="play">Jugar</string>
+    <string name="configuration">Configuración</string>
+    <string name="about">Acerca de</string>
+    <string name="scores">Puntuaciones</string>
+    <string name="titleAsteroids">Asteroides</string>
+    <string name="preferences">Preferencias</string>
+    <string name="about_text">Este programa ha sido desarrollado como ejemplo en el curso de Android para demostrar cómo se pueden lanzar nuevas actividades desde la actividad principal.</string>
+    <string name="search">Buscar</string>
+    <string name="music">Reproducir música</string>
+    <string name="music_summary">Se reproduce música de fondo</string>
+    <string name="graphic_types_summary">Se escoge la representación de gráficos</string>
+    <string name="graphic_types">Tipo de gráfico</string>
+    <string name="fragments_number">Número de Fragmentos</string>
+    <string name="fragments_number_summary">En cuantos trozos se divide un asteroide</string>
+    <string name="max_players">Maximo jugadores</string>
+    <string name="multiplayer_mode">Modo multijugador</string>
+    <string name="conexion_type">Tipo de conexión</string>
+    <string name="activate_multipalyer">Activar mulitjugador</string>
+    <string name="game_input">Entradas del juego</string>
+    <string name="accelerometer">Acelerometro</string>
+    <string name="touch">Tactil</string>
+    <string name="keyboard">teclas</string>
+    <string name="giroscope">Giroscopio</string>
+    <string name="storage_types">Tipos de Almacenamiento</string>
+    <string name="storage_types_summary">Tipo de almacenamiento para guardar las puntuaciones</string>
+</resources>
