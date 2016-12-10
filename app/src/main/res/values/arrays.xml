@@ -20,4 +20,34 @@
         <item>1</item>
         <item>2</item>
     </string-array>
+    <string-array name="storageTypes">
+        <item>Preferences</item>
+        <item>Internal</item>
+        <item>SD Card</item>
+        <item>External Folder</item>
+        <item>Raw Resource</item>
+        <item>Assests Folder</item>
+        <item>SAX XML</item>
+        <item>DOM XML</item>
+        <item>JSON GSON</item>
+        <item>SQL Lite</item>
+        <item>Server Socket</item>
+        <item>Web Service</item>
+        <item>Hosting Alex Kidding</item>
+    </string-array>
+    <string-array name="storageTypesValues">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
 </resources>

@@ -24,4 +24,6 @@
     <string name="touch">Tactil</string>
     <string name="keyboard">teclas</string>
     <string name="giroscope">Giroscopio</string>
+    <string name="storage_types">Tipos de Almacenamiento</string>
+    <string name="storage_types_summary">Tipo de almacenamiento para guardar las puntuaciones</string>
 </resources>

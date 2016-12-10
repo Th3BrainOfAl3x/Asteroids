@@ -15,6 +15,8 @@ public class Game extends Activity {
         setContentView(R.layout.game);
 
         gameView = (GameView) findViewById(R.id.GameView);
+        gameView.setParent(this);
+
     }
 
     @Override

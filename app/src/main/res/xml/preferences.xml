@@ -13,6 +13,13 @@
         android:entries="@array/graphicType"
         android:entryValues="@array/graphicTypesValues"
         android:defaultValue="1"/>
+    <ListPreference
+        android:key="storage"
+        android:title="@string/storage_types"
+        android:summary="@string/storage_types_summary"
+        android:entries="@array/storageTypes"
+        android:entryValues="@array/storageTypesValues"
+        android:defaultValue="1"/>
     <EditTextPreference
         android:key="fragments"
         android:title="@string/fragments_number"

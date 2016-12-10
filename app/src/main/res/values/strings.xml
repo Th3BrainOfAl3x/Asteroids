@@ -23,5 +23,7 @@
     <string name="touch">Touch</string>
     <string name="keyboard">keys</string>
     <string name="giroscope">Giroscope</string>
+    <string name="storage_types">Storage Types</string>
+    <string name="storage_types_summary">Type of storage where score are save</string>
 </resources>
 

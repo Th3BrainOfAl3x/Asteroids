@@ -24,7 +24,7 @@ public class Scores extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         adapter = new MyAdapter(this,
-                MainMenuActivity.store.scoresList(10));
+                MainMenuActivity.scoresStorage.scoresList(10));
 
         recyclerView.setAdapter(adapter);
         layoutManager = new LinearLayoutManager(this);
@@ -33,7 +33,7 @@ public class Scores extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int pos = recyclerView.getChildAdapterPosition(v);
-                String s = MainMenuActivity.store.scoresList(10).get(pos);
+                String s = MainMenuActivity.scoresStorage.scoresList(10).get(pos);
                 Toast.makeText(Scores.this, "Selección: " + pos
                         + " - " + s, Toast.LENGTH_LONG).show();
             }
